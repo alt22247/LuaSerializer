@@ -1,0 +1,4 @@
+﻿{
+	["PropGetOnly"] = "Updated",
+	["PropReadOnly"] = "Updated"
+}

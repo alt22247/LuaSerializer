@@ -201,9 +201,9 @@ namespace Lua
             if (numString.StartsWith("0x"))
                 return Convert.ToInt64(numString, 16);
 
-            string maxIntString = int.MaxValue.ToString();
-            if (!numString.Contains(".") && numString.Length <= maxIntString.Length && numString.CompareTo(maxIntString) <= 0)
-                return int.Parse(numString);
+            int numInt;
+            if (int.TryParse(numString, out numInt))
+                return numInt;
 
             return double.Parse(numString);
         }
