@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -90,11 +91,18 @@ namespace Lua
             else if (type.IsValueType)
             {
                 if (type == typeof(DateTime))
+                {
                     _writer.Write(QuoteAndEscapeString(obj.ToString()));
+                }
                 else if (type == typeof(bool))
+                {
                     _writer.Write(obj.ToString().ToLower());
+                }
                 else
-                    _writer.Write(obj.ToString());
+                {
+                    string objVal = Convert.ToString(obj, CultureInfo.InvariantCulture);
+                    _writer.Write(objVal);
+                }
             }
             else if (type == typeof(string))
             {

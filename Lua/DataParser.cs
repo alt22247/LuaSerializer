@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -205,7 +206,7 @@ namespace Lua
             if (int.TryParse(numString, out numInt))
                 return numInt;
 
-            return double.Parse(numString);
+            return double.Parse(numString, CultureInfo.InvariantCulture);
         }
 
         bool ReadBool()
